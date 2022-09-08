@@ -1,0 +1,33 @@
+---
+title: "hmk_2"
+format: html
+editor: visual
+---
+
+## Packages attempt 1
+
+maybe.
+
+## the rest of the homework
+
+assigning variable
+
+```{r, message=FALSE}
+library(tidyverse)
+
+a <- 1
+b <- 2
+
+ls()
+
+rm(list = ls())
+```
+
+You can add options to executable code like this
+
+```{r}
+#| echo: false
+2 * 2
+```
+
+The `echo: false` option disables the printing of code (only output is displayed).
