@@ -17,7 +17,12 @@ library(tidyverse)
 
 a <- 1
 b <- 2
+a <= b
+```
 
+    [1] TRUE
+
+``` r
 ls()
 ```
 
