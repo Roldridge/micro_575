@@ -1,16 +1,9 @@
 hmk_02
 ================
 
-## tidyverse packages stuff 1
+# this is homework 2 in class fixing stuff
 
-Quarto enables you to weave together content and executable code into a
-finished document. To learn more about Quarto see <https://quarto.org>.
-
-## along with creating objects
-
-When you click the **Render** button a document will be generated that
-includes both content and the output of embedded code. You can embed
-code like this:
+## along with creating objects in class making it look good.
 
 ``` r
 library(tidyverse)
@@ -32,9 +25,7 @@ ls()
 rm(list = ls())
 ```
 
-You can add options to executable code like this
+# rm function explained
 
-    [1] 4
-
-The `echo: false` option disables the printing of code (only output is
-displayed).
+we have to use the list=ls() because the rm function will default to the
+“…” list when it goes to find the file you want to remove.
