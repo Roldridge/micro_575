@@ -1,0 +1,105 @@
+---
+title: "Homework 3 template"
+author: "Ryan Oldridge"
+format: gfm
+editor: visual
+---
+
+# Data input/output
+
+loading tidyverse and reading the data file and making it an object
+
+```{r, message=FALSE}
+library(tidyverse)
+
+fake_data <- read_csv(file = "fake_date.csv")
+```
+
+```{r}
+read_csv("fake_date.csv")
+```
+
+```{r}
+print("fake_data")
+```
+
+# Investigating the properties of data frames
+
+Use two different functions that both give some kind of summary or overview of the data frame. Which one do you think is more useful?
+
+```{r}
+str(fake_data)
+```
+
+```{r}
+glimpse(fake_data)
+```
+
+glimpse is more useful here because it shows the data clearly laid out in an organized way.
+
+# Manipulating data frames
+
+Create a new column of your data frame by performing some kind of arithmetic operation on an existing column.
+
+```{r}
+fake_data$newsomething <- fake_data$something + 2 
+
+glimpse(fake_data)
+```
+
+created a new column by adding 2 to the column "something"
+
+# Working on columns
+
+Calculate the mean of a numeric column in your data frame.
+
+```{r}
+mean(fake_data$newsomething)
+```
+
+found that the mean of the new column i made is 7.5
+
+# Accessing elements of data frames
+
+```{r}
+cats <- data.frame(coat = c("calico", "black", "tabby", "calico"),
+                   weight = c(2.1, 5.0, 3.2, 4.4),
+                   likes.string = c(TRUE, FALSE, TRUE, TRUE))
+```
+
+```{r}
+cats[1]
+```
+
+shows the first list which is the coat of the cats
+
+```{r}
+cats[[1]]
+
+```
+
+listed the first column as a vector
+
+```{r}
+cats$coat
+```
+
+listed the values within the first column which happen to be the coats.
+
+```{r}
+cats[1, 1]
+```
+
+this called the first value of the first column
+
+```{r}
+cats[ , 1]
+```
+
+this gave me every value of the first column
+
+```{r}
+cats[1, ]
+```
+
+gives me all of the first row of each column
