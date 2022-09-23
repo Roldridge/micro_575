@@ -11,15 +11,6 @@ my stuff wouldn’t work
 library(tidyverse)
 ```
 
-    ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
-    ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
-    ✔ tibble  3.1.8      ✔ dplyr   1.0.10
-    ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
-    ✔ readr   2.1.2      ✔ forcats 0.5.2 
-    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-    ✖ dplyr::filter() masks stats::filter()
-    ✖ dplyr::lag()    masks stats::lag()
-
 ``` r
 data <- read_csv("fake_data.csv")
 ```
@@ -41,3 +32,6 @@ ggplot(data) +
 ```
 
 ![](hmk_04_files/figure-gfm/unnamed-chunk-3-1.png)
+
+this is good because it shows what proportion of each make is at a
+particular mileage. Also, its colorful because that looks nice.

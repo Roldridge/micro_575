@@ -9,7 +9,7 @@ author: Ryan Oldridge
 
 loading tidyverse because i have to and forgot about it and wondered why my stuff wouldn't work
 
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 ```
 
