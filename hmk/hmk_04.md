@@ -15,15 +15,6 @@ library(tidyverse)
 data <- read_csv("fake_data.csv")
 ```
 
-    Rows: 34 Columns: 2
-    ── Column specification ────────────────────────────────────────────────────────
-    Delimiter: ","
-    chr (1): make
-    dbl (1): mileage
-
-    ℹ Use `spec()` to retrieve the full column specification for this data.
-    ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
-
 making the graph because thats the homework
 
 ``` r

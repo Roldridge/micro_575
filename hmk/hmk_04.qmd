@@ -14,7 +14,7 @@ library(tidyverse)
 ```
 
 
-```{r}
+```{r, message=FALSE}
 data <- read_csv("fake_data.csv")
 ```
 
