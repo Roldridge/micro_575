@@ -1,0 +1,53 @@
+---
+title: "Hmk_05 template"
+format: gfm
+editor: visual
+author: Ryan Oldridge
+---
+
+## Installed nycflights and tidyverse
+
+```{r, message=FALSE}
+
+library(nycflights13)
+library(tidyverse)
+```
+
+# Question 1: filtering
+
+```{r}
+flights1 <- filter(flights,origin == "LGA", day == 16, distance < 2000)
+
+ggplot(flights1) +
+  geom_point(aes(x=air_time, y= distance))
+```
+
+# Question 2: dealing with NAs
+
+```{r}
+flights2 <- filter(flights, !(is.na(arr_time) | is.na(dep_time)))
+
+```
+
+made a filter that will remove the NA's from the air time and departure time.
+
+## filtering NAs
+
+```{r}
+flights1 <- filter(flights, !(is.na(air_time)), origin == "LGA", day == 16, distance < 2000)
+
+ggplot(flights1) +
+  geom_point(aes(x=air_time, y= distance))
+```
+
+plotted the new data set that removed the NA's
+
+# Question 3: adding columns
+
+used the mutate function to add the column speed
+
+```{r, message=FALSE}
+flights3 <- mutate(flights, speed = distance / air_time)
+ggplot(flights3) +
+  geom_histogram(aes(x=speed))
+```
