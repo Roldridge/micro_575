@@ -1,0 +1,50 @@
+---
+title: "Bad Plot"
+author: "Ryan Oldridge"
+format: gfm
+editor: visual
+---
+
+## bad plot
+
+```{r, message=FALSE}
+library(tidyverse)
+```
+
+```{r}
+bad <- read.csv("baddata.csv")
+
+```
+
+```{r}
+p <- ggplot(data = bad) +
+  geom_point(mapping = aes(x=time, y=day, color= color, size= tasks), shape=11) + 
+  scale_size(range=c(20,40)) +
+  geom_line(mapping = aes(x=duration, y=day)) +
+  facet_grid(number ~ day) +
+  theme(strip.background.x = element_rect("yellow"),
+        strip.background.y = element_rect("blue"),
+        strip.text = element_text(color = "red")) + 
+  ggtitle("ranking my schedule") +
+  theme(panel.background = element_rect("deepskyblue4"))
+```
+
+```{r}
+print(p)
+```
+
+# Why it is a bad plot
+
+It is unreadable.
+
+Days of the week are in a different language.
+
+Many of the plots are empty.
+
+Those plots with data use a shape that makes it impossible to identify the point its meant to label.
+
+No explanation for the scales.
+
+The line plots is the same on every plot using it and it is not explained what it means.
+
+The colors mean nothing.
