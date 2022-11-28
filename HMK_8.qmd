@@ -1,0 +1,97 @@
+---
+title: "HMK 8: summarising, reshaping, merging"
+format: gfm
+editor: visual
+---
+
+# Q1: Summarising operations and exploratory data analysis
+
+## Q1a
+
+Are the data sets different in any important way?
+
+```{r, message=FALSE}
+library(tidyverse)
+exp1 <- read_csv("experiment1.csv")
+
+dfexp1 <- group_by(exp1, balls)
+
+ball_summary <- summarise(dfexp1,
+                         mean_x = mean(x),
+                         mean_y = mean(y),
+                         sd_x = mean(x),
+                         sd_y = mean(y),
+                         count = n())
+
+```
+
+the data sets are essentially the same especially if i ignore the slight differences. 
+
+## Q1b
+```{r, message=FALSE}
+exp2 <- read_csv("experiment2.csv")
+
+dfexp2 <- group_by(exp2, dataset)
+
+dataset_sum <- summarise(dfexp1,
+                         mean_x = mean(x),
+                         mean_y = mean(y),
+                         sd_x = mean(x),
+                         sd_y = mean(y),
+                         count = n())
+```
+
+It is the same as the first one. 
+
+
+
+# Q2: pivoting
+
+
+```{r}
+
+relig_in <- relig_income
+
+relig_long <- relig_in %>%
+  pivot_longer(c("<$10k", "$10-20k", "$20-30k", "$30-40k", "$40-50k", "$50-75k", "$75-100k", "$100-150k", ">150k", "Don't know/refused"),
+               names_to = "income",
+               values_to = "responses")
+
+ggplot(relig_long) +
+  geom_point(aes(x=religion, y=responses, color=income)) +
+  theme(axis.text.x = element_text(angle = 90))
+
+```
+
+
+# Q3: merging
+
+## Q3a: meaning of joins
+
+Explain the difference between a left join, a right join, an inner join, and an outer join.
+
+
+left and right join are similar in that they combine data sets but left join will keep the columns from the left data set while the right join will keep the columns from the right data set. 
+
+outer join keeps all the columns and will include NA's while inner join will only keep similar columns so it will remove any NA's. 
+
+## Q3b: using joins
+
+```{r, warning=FALSE, message=FALSE}
+library(nycflights13)
+
+flights <- nycflights13::flights
+weather <- nycflights13::weather
+
+flights_deptime <- mutate(flights, 
+                          dep_time_new = round(dep_time, digits = -2) / 100)
+
+fw_join <- left_join(x = flights_deptime, y = weather, by = c("year" = "year", "month" = "month", "day" = "day", "dep_time_new" = "hour"))
+
+ggplot(fw_join)+
+  geom_smooth(aes(x=wind_speed, y=dep_delay),
+              method = "lm")
+
+```
+
+
