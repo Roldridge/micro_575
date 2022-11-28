@@ -1,5 +1,6 @@
 HMK 8: summarising, reshaping, merging
 ================
+Ryan Oldridge
 
 # Q1: Summarising operations and exploratory data analysis
 

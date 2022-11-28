@@ -2,6 +2,7 @@
 title: "HMK 8: summarising, reshaping, merging"
 format: gfm
 editor: visual
+author: Ryan Oldridge
 ---
 
 # Q1: Summarising operations and exploratory data analysis
@@ -25,9 +26,10 @@ ball_summary <- summarise(dfexp1,
 
 ```
 
-the data sets are essentially the same especially if i ignore the slight differences. 
+the data sets are essentially the same especially if i ignore the slight differences.
 
 ## Q1b
+
 ```{r, message=FALSE}
 exp2 <- read_csv("experiment2.csv")
 
@@ -41,12 +43,9 @@ dataset_sum <- summarise(dfexp1,
                          count = n())
 ```
 
-It is the same as the first one. 
-
-
+It is the same as the first one.
 
 # Q2: pivoting
-
 
 ```{r}
 
@@ -63,17 +62,15 @@ ggplot(relig_long) +
 
 ```
 
-
 # Q3: merging
 
 ## Q3a: meaning of joins
 
 Explain the difference between a left join, a right join, an inner join, and an outer join.
 
+left and right join are similar in that they combine data sets but left join will keep the columns from the left data set while the right join will keep the columns from the right data set.
 
-left and right join are similar in that they combine data sets but left join will keep the columns from the left data set while the right join will keep the columns from the right data set. 
-
-outer join keeps all the columns and will include NA's while inner join will only keep similar columns so it will remove any NA's. 
+outer join keeps all the columns and will include NA's while inner join will only keep similar columns so it will remove any NA's.
 
 ## Q3b: using joins
 
@@ -93,5 +90,3 @@ ggplot(fw_join)+
               method = "lm")
 
 ```
-
-
