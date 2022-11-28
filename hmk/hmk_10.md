@@ -1,0 +1,109 @@
+Homework 10: Decisions and loops
+================
+Drew Steen
+
+# function that takes in the time and gives you a message (in latin because why not?)
+
+broke the day into 3 sections and had a different message for what
+section the time falls in.
+
+``` r
+watch <- function(time) {
+  if(time >= 000 & time <= 1100) {
+    print("bonum mane")
+  } else if( time >=1101 & time <= 1800) {
+    print("bonum dies")
+  } else if( time >= 1801 & time <= 2359) {
+    print("bonum vesperam")
+  } else { 
+    print("potes legere horologium")
+    }
+}
+
+
+time <- 2000
+watch(time)
+```
+
+    [1] "bonum vesperam"
+
+``` r
+time2 <- 30000
+watch(time2)
+```
+
+    [1] "potes legere horologium"
+
+# Loops
+
+\#for loop that calculates the mean of each coloumn in mtcars
+
+after initializing the functions result vector the for loop will
+calculate the mean of each coloumn and print the result.
+
+``` r
+mtcars <- mtcars
+mt_means <- rep(NA, length(mtcars))
+
+for (i in seq_along(mtcars)) {
+  mt_means[i] <- mean(mtcars[ ,1])
+  mt_means
+}
+mt_means
+```
+
+     [1] 20.09062 20.09062 20.09062 20.09062 20.09062 20.09062 20.09062 20.09062
+     [9] 20.09062 20.09062 20.09062
+
+\#function that calculates the mean of all numeric columns in a data
+frome, can accept data frame with non-numeric columns
+
+if the data given is numeric then this function will calculate the mean
+but it will return “NA” if it is anything else. the data given does have
+to be a data frame though which is why the diamonds data set was turned
+into a data frame before the function would work.
+
+``` r
+library(tidyverse)
+```
+
+    ── Attaching packages ─────────────────────────────────────── tidyverse 1.3.2 ──
+    ✔ ggplot2 3.3.6      ✔ purrr   0.3.4 
+    ✔ tibble  3.1.8      ✔ dplyr   1.0.10
+    ✔ tidyr   1.2.1      ✔ stringr 1.4.1 
+    ✔ readr   2.1.2      ✔ forcats 0.5.2 
+    ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+    ✖ dplyr::filter() masks stats::filter()
+    ✖ dplyr::lag()    masks stats::lag()
+
+``` r
+any_mean <- function(df) {
+  calc.mean <- rep(NA, length(df))
+  for (i in seq_along(df)) {
+    if(is.numeric(df [ ,i])) {
+      calc.mean[i] <- mean(df [ ,i])
+    } else if (!is.numeric(df [ ,i])) {
+      calc.mean[i] <- NA
+    }
+  }
+  calc.mean
+}
+
+diamond <- as.data.frame(diamonds)
+any_mean(diamond)
+```
+
+     [1]    0.7979397           NA           NA           NA   61.7494049
+     [6]   57.4571839 3932.7997219    5.7311572    5.7345260    3.5387338
+
+## Why not loops
+
+In R, we generally encourage people to use vectorized functions instead
+of `for` loops. According to [your
+textbook](https://r4ds.had.co.nz/iteration.html), what is better about
+vectorized functions?
+
+R was built around vectors and most of the built in functions are
+designed to recognize and handle a vector. because of this R will
+recognize a function that uses a for loop better than the for loop by
+itself.
